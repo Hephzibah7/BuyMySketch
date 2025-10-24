@@ -20,9 +20,7 @@ async function addUser(req:Request, res:Response, next:NextFunction):Promise<voi
         res.status(201).json({
             success:true,
             message: "Sign up successfull"
-        })
-
-       
+        })   
         
     } catch(error){
         next(error);
