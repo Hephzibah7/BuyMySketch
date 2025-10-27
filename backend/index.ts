@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { connectDB } from "./src/config/db.js";
 import { errorHandler } from "./src/middleware/errorHandler.js";
+import userRoutes from "./src/route/user.js"
 
 dotenv.config();
 
@@ -25,11 +26,12 @@ app.use(
 
 connectDB();
 
+app.use("/auth", userRoutes);
 app.use(errorHandler);
 
 // ✅ Start the server
-const port = process.env.PORT || 5000;
+const port = 9002;
 app.listen(port, () => {
-  console.log(`🚀 Server running on port ${port}`);
+  console.log(`Server running on port ${port}`);
 });
 
