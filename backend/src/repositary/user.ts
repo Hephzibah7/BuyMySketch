@@ -38,6 +38,7 @@ async function loginUser(user:loginType, next:NextFunction){
         const token=jwt.sign({userId:existingUser._id}, SECRET_KEY,{
             expiresIn:"1h",
         });
+        console.log(token);
 
         const userCredentials={
             name:existingUser.name,
@@ -53,9 +54,9 @@ async function loginUser(user:loginType, next:NextFunction){
     }
 }
 
-const userreposit={
+const userRepo={
     addUser:addUser,
     loginUser:loginUser
 }
 
-export default userreposit;
+export default userRepo;

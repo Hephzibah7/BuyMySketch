@@ -1,7 +1,7 @@
 import {Request, Response, NextFunction} from "express";
 import userDataType from "../type/userDataType.js";
 import userHelper from "../helper/user.js";
-import userreposit from "../repositary/user.js";
+import userRepo from "../repositary/user.js";
 import { AppError } from "../utils/AppError.js";
 import loginType from "../type/loginType.js";
 
@@ -15,7 +15,7 @@ async function addUser(req:Request, res:Response, next:NextFunction):Promise<voi
         
         if(!user) return;
         
-        await userreposit.addUser(user,next);
+        await userRepo.addUser(user,next);
 
         res.status(201).json({
             success:true,
@@ -34,7 +34,7 @@ async function login(req:Request, res:Response, next:NextFunction):Promise<void>
 
        if(!user) return;
 
-       const userCredentials=await userreposit.loginUser(user,next);
+       const userCredentials=await userRepo.loginUser(user,next);
 
        res.status(201).json({
         user:userCredentials,
