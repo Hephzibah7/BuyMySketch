@@ -21,11 +21,8 @@ async function addSeller(req:Request, res:Response, next:NextFunction):Promise<v
 async function getSeller(req:Request, res:Response, next:NextFunction):Promise<void>{
     try{
         const userId=req.user as string;
-        const data=sellerRepo.getSeller(userId, next);
-        res.status(201).json({
-            success:true,
-            message: "Seller Details added Successfully"
-        }) 
+        const data=await sellerRepo.getSeller(userId, next);
+        res.status(200).json({data:data}); 
 
     }
     catch(error){
@@ -33,9 +30,39 @@ async function getSeller(req:Request, res:Response, next:NextFunction):Promise<v
     }
 }
 
+async function getAllSeller(req:Request, res:Response, next:NextFunction):Promise<void>{
+    try{
+        const data=await sellerRepo.getAllSeller(next);
+        res.status(200).json({data:data});
+    }
+    catch(error){
+        next(error);
+    }
+}
+
+async function updateSeller(req:Request, res:Response, next:NextFunction):Promise<void>{
+    try{
+        const userId=req.user as string;
+        const data=req.body as any;
+        const newdata=await sellerRepo.updateSeller(userId, data, next);
+        res.status(201).json({
+            success:true,
+            message:"User Details Updated Successfully"
+        })
+    }
+    catch(error){
+        next(error);
+    }
+}
+
+
+
 const sellerController={
     addSeller:addSeller,
-    getSeller:getSeller
+    getSeller:getSeller,
+    getAllSeller:getAllSeller,
+    updateSeller:updateSeller,
+   
 }
 
 export default sellerController;

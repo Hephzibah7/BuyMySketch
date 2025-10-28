@@ -6,7 +6,6 @@ import requestType from "../type/requestType.js";
 
 const verifyToken=(req:Request,res:Response,next:NextFunction)=>{
     try{
-        console.log("you are checking the token");
         const authHeader=req.headers.authorization;
          if (!authHeader || !authHeader.startsWith("Bearer ")) {
          throw new AppError("Token is missing",401);
