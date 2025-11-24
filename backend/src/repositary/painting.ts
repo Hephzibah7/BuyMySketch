@@ -5,8 +5,8 @@ import Painting from "../model/painting.js";
 
 async function addPainting(data:paintingType, userId:string, next:NextFunction){
     try{
-        const {name, description, category, image}=data;
-        const newPainting=new Painting({userId, name, description, category, image});
+        const {name, description, category, image, likes}=data;
+        const newPainting=new Painting({userId, name, description, category, image, likes});
         const savedPainting=await newPainting.save();
     }
     catch(error){

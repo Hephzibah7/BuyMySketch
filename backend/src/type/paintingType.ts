@@ -3,7 +3,8 @@ interface paintingType{
     name:string,
     description:string,
     category:string,
-    image:string
+    image:string,
+    likes:number
 }
 
 export default paintingType;
