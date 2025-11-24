@@ -48,7 +48,7 @@ async function updateSeller(userId:string, data:any, next:NextFunction){
             {$set:data},
             {new:true, runValidators:true}
         );
-
+        
 
     }
     catch(error){
