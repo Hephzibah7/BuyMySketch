@@ -6,6 +6,8 @@ import { connectDB } from "./src/config/db.js";
 import { errorHandler } from "./src/middleware/errorHandler.js";
 import userRoutes from "./src/route/user.js"
 import sellerRoutes from "./src/route/seller.js"
+import paintingController from "./src/controller/painting.js";
+import paintingRoutes from "./src/route/painting.js"
 dotenv.config();
 
 const app = express();
@@ -28,6 +30,7 @@ connectDB();
 
 app.use("/auth", userRoutes);
 app.use("/",sellerRoutes);
+app.use("/", paintingRoutes);
 app.use(errorHandler);
 
 // ✅ Start the server

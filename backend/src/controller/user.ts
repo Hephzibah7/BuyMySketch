@@ -9,7 +9,6 @@ const SECRET_KEY="secret_key";
 
 async function addUser(req:Request, res:Response, next:NextFunction):Promise<void>{
     try{
-        console.log("done with helper");
         const data=req.body as userDataType;
         if(!data) throw next(new AppError("Data Missing",400));
         const user= await userHelper.addUser(data, next);
