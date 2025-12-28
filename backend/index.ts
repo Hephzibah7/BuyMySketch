@@ -31,6 +31,8 @@ connectDB();
 app.use("/auth", userRoutes);
 app.use("/",sellerRoutes);
 app.use("/", paintingRoutes);
+
+//errorHandler should be registered last
 app.use(errorHandler);
 
 // ✅ Start the server
