@@ -1,27 +1,75 @@
-// src/middleware/errorHandler.ts
 import { Request, Response, NextFunction } from "express";
-import { AppError } from "../utils/AppError.js";
+import {AppError} from "../utils/AppError.js";
+import winston from "winston";
 
-/**
- * This middleware has four parameters, express identifies it as an error handler in our case it is this method.
- * so in any method if we encounter any error we return next(error), the error is passed in this middleware as appError type with 
- *
- * @param err  Application-specific error instance
- * @param req  Express request object
- * @param res  Express response object
- * @param next Express next middleware function
- */
 
-export const errorHandler = (
-  err: AppError,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  console.error("❌ Error:", err.message);
+const LogErrors = winston.createLogger({
+    transports: [
+      new winston.transports.Console(),
+      new winston.transports.File({ filename: 'app_error.log' })
+    ]
+  });
+    
 
-  const status = err.statusCode || 500;
-  const message = err.message || "Internal Server Error";
+class ErrorLogger {
+    constructor(){}
+    async logError(err:Error|AppError){
+        console.log('==================== Start Error Logger ===============');
+        LogErrors.log({
+            private: true,
+            level: 'error',
+            message: `${new Date()}-${JSON.stringify(err)}`,
+            stack:err.stack
+            
+          });
+        console.log('==================== End Error Logger ===============');
+        // log error with Logger plugins
+      
+        return false;
+    }
 
-  res.status(status).json({ success: false, message });
-};
+    isTrustError(error:Error|AppError){
+        if(error instanceof AppError){
+            return error.isOperational;
+        }else{
+            return false;
+        }
+    }
+}
+
+const errorHandler = async(err:AppError,req:Request,res:Response,next:NextFunction) => {
+    
+    const errorLogger = new ErrorLogger();
+
+    process.on('uncaughtException', (error) => {
+        errorLogger.logError(error);
+        if(errorLogger.isTrustError(err)){
+            //process exist // need restart
+        }
+    })
+    
+    // console.log(err.description, '-------> DESCRIPTION')
+    // console.log(err.message, '-------> MESSAGE')
+    // console.log(err.name, '-------> NAME')
+   if (err) {
+  await errorLogger.logError(err);
+
+  // Operational errors (safe)
+  if (errorLogger.isTrustError(err)) {
+    return res.status(err.statusCode).json({
+      success: false,
+      message: err.message
+    });
+  }
+
+  // Non-operational errors (bugs)
+  return res.status(500).json({
+    success: false,
+    message: 'Internal Server Error'
+  });
+}
+
+    next();
+}
+
+export default  errorHandler;
