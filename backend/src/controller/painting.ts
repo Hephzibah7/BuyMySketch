@@ -2,12 +2,12 @@ import {Request, Response, NextFunction} from "express"
 import { AppError } from "../utils/AppError.js"
 import paintingHelper from "../helper/painting.js";
 import paintingRepo from "../repositary/painting.js";
-
+import { ValidationError, BadRequestError, APIError } from "../utils/AppError.js";
 async function addPainting(req:Request, res:Response, next:NextFunction):Promise<void>{
     try{
         const data=req.body;
         const userId=req.user as string;
-        if(!data) throw next(new AppError("Data Missing",400));
+        if(!data) throw next(new ValidationError("Data Missing"));
         const painting=await paintingHelper.addPainting(data, userId, next);
 
         if(!painting) return;
