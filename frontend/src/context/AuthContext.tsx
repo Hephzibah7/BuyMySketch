@@ -1,15 +1,9 @@
-// // src/contexts/AuthContext.js
-// import React, { createContext, useState } from 'react';
-// import { ROLES } from '../constants/role';
+import React from 'react';
 
-// export const AuthContext = createContext();
+const AuthContext = () => {
+  return (
+    <div>Login</div>
+  );
+};
 
-// export const AuthProvider = ({ children })=> {
-//     const [role, setRole] = useState(ROLES.GUEST); // Default role
-
-//     return (
-//         <AuthContext.Provider value={{ role, setRole }}>
-//             {children}
-//         </AuthContext.Provider>
-//     );
-// };
+export default AuthContext;
