@@ -18,8 +18,8 @@ const Login = () => {
                    <div className=''>
                         <div className='flex flex-col gap-8'>
                             <div>
-                                <h1 className='font-bold text-xl mb-2'>Username:</h1>
-                                <input className="border  border-black w-full p-2" placeholder='Enter your Username'/>
+                                <h1 className='font-bold text-xl mb-2'>Email:</h1>
+                                <input className="border  border-black w-full p-2" placeholder='Enter your Email'/>
                             </div>
                             <div>
                                 <h1 className='font-bold text-xl mb-2'>Password:</h1>
@@ -31,7 +31,7 @@ const Login = () => {
                     <button className='w-full border p-3 bg-blue-500 rounded-xl text-white'>Submit</button>
                    </div>
                    <div className='mt-8 flex justify-center font-bold'>
-                        Not registered?  <span className='text-pink-600 cursor'>&nbsp; Create an account</span>
+                        Not registered?  <span className='text-pink-600 cursor-pointer'>&nbsp; Create an account</span>
                    </div>
                 </div>
                 </form>
