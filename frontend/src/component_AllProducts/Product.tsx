@@ -7,7 +7,7 @@ const Product = () => {
   return (
     <div>
       <div className='w-full'>
-        <Navbar/>
+        {/* <Navbar/> */}
         <div className='w-full h-contain p-3 shadow-2xl'>
           1-16 of over 30000 results for <span className='text-blue-500'>"black and white sketch"</span>
         </div>
