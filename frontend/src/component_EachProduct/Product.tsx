@@ -5,10 +5,10 @@ import LargeItem from './LargeItem';
 function Product() {
   return (
     <div>
-    <div className='flex md:hidden'>
+    <div className='flex md:hidden '>
       <Item/>
     </div>
-    <div className='hidden md:flex'>
+    <div className='hidden md:flex w-full '>
       <LargeItem/>
     </div>
     </div>
