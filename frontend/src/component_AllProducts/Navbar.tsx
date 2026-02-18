@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <div>
         <div className='md:hidden'>
-        <div className='w-full p-3 h-contain bg-pink-500'>
+        <div className='w-full p-3 h-contain bg-gray-500'>
       <div className='flex flex-col gap-2'>
         <div className='flex justify-between'>
             <div className='flex gap-2'>
@@ -27,7 +27,7 @@ const Navbar = () => {
       </div>
        
     </div>
-    <div className='bg-pink-300 h-contain w-full p-2 flex gap-2'>
+    <div className='bg-gray-300 h-contain w-full p-2 flex gap-2'>
         <div>location icon</div>
         <div>
             Address xyz
@@ -35,7 +35,7 @@ const Navbar = () => {
     </div>
     </div>
     <div className="hidden md:flex">
-        <div className='w-full h-contain bg-pink-500 p-3 text-white font-bold flex gap-4'>
+        <div className='w-full h-contain bg-gray-500 p-3 text-white font-bold flex gap-4'>
             <div className='text-2xl'>
                 BuyMySketch
             </div>
