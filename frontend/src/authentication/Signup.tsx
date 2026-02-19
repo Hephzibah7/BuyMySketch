@@ -2,14 +2,15 @@ import React from 'react';
 
 const SignUp = () => {
   return (
-     <div className='h-screen flex items-center justify-center'>
-        <div className='w-full m-2 h-contain md:w-2/3 lg:w-2/5 border border-black border-2 rounded-2xl'>
-            <div className='lg:p-5'>
-                <form>
-                <div className='m-10 lg:m-5'>
+     <div className='h-contain flex justify-center w-full'>
+        <div className=' min-w-3/5 md:w-2/3 lg:w-1/3 md:p-5 m-5 flex justify-center w-full'>
+        <div className='h-contain w-full border-amber-500 border-2 rounded-2xl'>
+            <div className='h-contain p-10'>
+                <form className='h-full w-full'>
+                <div className=' md:m-3'>
                    <div className='text-center font-bold'>
-                        <div className='text-4xl text-gray-500'>
-                            BuyMySketch
+                        <div className='text-4xl text-rose-500'>
+                            Create an Account
                         </div>
                         <div className='mt-2 mb-10 text-lg'>
                             Enter your SignUp credentials
@@ -39,15 +40,17 @@ const SignUp = () => {
                         </div>
                    </div>
                    <div className='mt-5'>
-                    <button className='w-full border p-3 bg-gray-500 rounded-xl text-lg font-bold text-white cursor-pointer'>Submit</button>
+                    <button className='w-full border p-3 bg-rose-500 rounded-xl text-lg font-bold text-white cursor-pointer'>Submit</button>
                    </div>
                    <div className='mt-8 flex justify-center font-bold'>
-                        Already registered?  <span className='text-gray-500 cursor-pointer underline'>&nbsp; Login</span>
+                        Already registered?  <span className='text-amber-500 cursor-pointer underline'>&nbsp; Login</span>
                    </div>
                 </div>
                 </form>
             </div>
         </div>
+        </div>
+
     </div>
   );
 };
