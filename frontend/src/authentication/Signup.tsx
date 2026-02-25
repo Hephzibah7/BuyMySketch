@@ -2,8 +2,8 @@ import React from 'react';
 
 const SignUp = () => {
   return (
-     <div className='h-contain flex justify-center w-full'>
-        <div className=' min-w-3/5 md:w-2/3 lg:w-1/3 md:p-5 m-5 flex justify-center w-full'>
+     <div className='h-contain flex lg:justify-between justify-center w-full'>
+        <div className=' min-w-3/5 lg:w-1/3 md:p-5 m-5 flex justify-center w-full'>
         <div className='h-contain w-full border-amber-500 border-2 rounded-2xl'>
             <div className='h-contain p-10'>
                 <form className='h-full w-full'>
@@ -49,6 +49,9 @@ const SignUp = () => {
                 </form>
             </div>
         </div>
+        </div>
+        <div className=' max-w-2/3 lg-2/3 h-screen hidden lg:flex  item-center justify-center '>
+            <img className="object-cover " src="Hero.jpeg"/>
         </div>
 
     </div>
