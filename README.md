@@ -1,8 +1,8 @@
 
 
-# 🌟 Project Libera
+# 🌟 Project ArtSpace
 
-**Project Libera** is a full-stack MERN marketplace that allows users to **buy and sell sketches**, helping artists connect with consumers effortlessly and build a creative sketch community.
+**Project ArtSpace** is a full-stack MERN marketplace that allows users to **buy and sell sketches**, helping artists connect with consumers effortlessly and build a creative sketch community.
 
 ---
 
