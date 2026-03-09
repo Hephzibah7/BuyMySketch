@@ -5,12 +5,19 @@ import Login from './authentication/Login';
 import SignUp from './authentication/Signup';
 import Product from './component_AllProducts/Product';
 import Navbar from './component_AllProducts/Navbar';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
+    <Router>
+      <div className="App">
+        <Routes>
+         <Route path="/" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
       {/* <Navbar/> */}
-     <SignUp/>
+      </Routes>
     </div>
+    </Router>
+    
   );
 }
 

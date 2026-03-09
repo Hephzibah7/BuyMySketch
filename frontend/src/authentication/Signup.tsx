@@ -1,6 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import FormDataType from '../types/FormDataType';
+import axios from "axios";
+import url from '../constants/url';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import toastwork from '../constants/toast';
 
 const SignUp = () => {
 
@@ -12,6 +17,7 @@ const SignUp = () => {
     });
     const [emailError, setEmailError] = useState<string>("");
     const [passwordError, setPasswordError] = useState<string>("");
+     const navigate = useNavigate();
 
 
     const isEmailValid = (email:string) => {
@@ -30,6 +36,7 @@ const SignUp = () => {
         if(name=="password"){
              if(value=="") setPasswordError("Password is Required");
              if(value.length<10) setPasswordError("The length of the password should be minimum 10");
+             if(value.length>=10) setPasswordError("");
 
         }
         setFormData(values => ({
@@ -39,11 +46,40 @@ const SignUp = () => {
         }));
     }
 
+    const isValid=()=>{
+        if(formData.name=="") {
+             toastwork("error", "Name is missing");
+          return false;
+        }
+        if(formData.email=="") {
+            toastwork("error", "Email is missing");
+            return false;
+        }
+        if(formData.password=="") {
+             toastwork("error", "Password is missing");
+            return false;
+        }
+        if(emailError!="") {
+             toastwork("error", "Email is not correct");
+          return false;
+        }
+          if(passwordError!="") {
+             toastwork("error", "Password is not correct");
+          return false;
+        }
+        return true;
+        }
+    
+
 
 
     const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         try {
             e.preventDefault();
+            if(!isValid()){
+                //do not allow the control to execute this
+            }
+            else{
             console.log(formData);
             setFormData({
                 name: "",
@@ -51,10 +87,15 @@ const SignUp = () => {
                 password: "",
                 role: ["buyer"]
             });
-
+        // const response = await axios.post(`${url}/signup`, formData);
+          
+         toastwork("success", "SignUp Successfull");
+            setTimeout(()=>navigate("/login"), 2000);
+        }
+        
         }
         catch (error) {
-            console.log("signup failed");
+           toastwork("success", "SignUp Unsuccessfull");
         }
     }
 
@@ -81,12 +122,12 @@ const SignUp = () => {
                                         </div>
                                         <div>
                                             <h1 className='font-bold text-xl mb-1'>Email<span className='text-red-500'>*</span></h1>
-                                            <input className={`border  rounded-2xl w-full p-3 focus:outline-none focus:border-amber-500 ${emailError?"focus:outline-none border-red-500":"black"}`} name="email" value={formData?.email} onChange={handleChange} placeholder='Enter your Email' />
+                                            <input className={`border  rounded-2xl w-full p-3 focus:outline-none focus:border-amber-500 ${emailError?"focus:outline-none focus:border-red-500 border-red-500":"black"}`} name="email" value={formData?.email} onChange={handleChange} placeholder='Enter your Email' />
                                             {emailError && <p className='text-red-500'>{emailError}</p>}
                                         </div>
                                         <div>
                                             <h1 className='font-bold text-xl mb-1'>Password<span className='text-red-500'>*</span></h1>
-                                            <input className={`border  rounded-2xl w-full p-3 focus:outline-none focus:border-amber-500 ${passwordError?"border-red-500":"black"} `} name="password" value={formData?.password} onChange={handleChange} type="password" placeholder='Enter your Password' />
+                                            <input className={`border  rounded-2xl w-full p-3 focus:outline-none focus:border-amber-500 ${passwordError?"border-red-500 focus:border-red-500":"black"} `} name="password" value={formData?.password} onChange={handleChange} type="password" placeholder='Enter your Password' />
                                             {passwordError && <p className='text-red-500'>{passwordError}</p>}
                                         </div>
                                         {/* <div>
@@ -106,6 +147,7 @@ const SignUp = () => {
                                 </div>
                             </div>
                         </form>
+                         <ToastContainer />
                     </div>
                 </div>
             </div>
