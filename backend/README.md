@@ -1,14 +1,3 @@
-# Project Libera
-
-Project-Libera- Allows the users to buy and sell sketches, helps the artist to meet with the consumers effortlessly. Sketch community
-
----
-
-## Tech Stack
-
-MERN + TypeScript + Tailwind CSS
-
----
 
 ## Installation
 
