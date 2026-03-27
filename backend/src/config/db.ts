@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
-const mongoURI ="mongodb+srv://he:he@cluster0.jqmtqda.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+const mongoURI ="mongodb://artist:artist@ac-pmxvjdh-shard-00-00.ukw9uwv.mongodb.net:27017,ac-pmxvjdh-shard-00-01.ukw9uwv.mongodb.net:27017,ac-pmxvjdh-shard-00-02.ukw9uwv.mongodb.net:27017/?ssl=true&replicaSet=atlas-54e56s-shard-0&authSource=admin&appName=Cluster0";
 mongoose.set('debug', true);
 // Function to connect to MongoDB
 export const connectDB = async () => {
@@ -18,4 +19,8 @@ export const connectDB = async () => {
         process.exit(1); // stop the app if DB connection fails
     }
 };
+
+
+
+
 

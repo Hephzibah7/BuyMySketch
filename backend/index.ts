@@ -8,7 +8,11 @@ import userRoutes from "./src/route/user.js"
 import sellerRoutes from "./src/route/seller.js"
 import paintingController from "./src/controller/painting.js";
 import paintingRoutes from "./src/route/painting.js"
-dotenv.config();
+
+
+
+
+dotenv.config();  
 
 const app = express();
 app.use(express.json());
