@@ -2,7 +2,7 @@ interface userDataType{
     name:string,
     email:string,
     password:string,
-    role:string
+    isSeller:false
 }
 
 export default userDataType;

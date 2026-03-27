@@ -2,6 +2,6 @@ interface FormDataType{
     name:string,
     email:string,
     password:string,
-    role:string[]
+    isSeller:boolean
 }
 export default FormDataType;

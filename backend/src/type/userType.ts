@@ -3,6 +3,6 @@ interface userType{
     name:string,
     password:string,
     email:string,
-    role:string
+    isSeller:boolean
 }
 export default userType;

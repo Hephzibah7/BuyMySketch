@@ -13,7 +13,7 @@ const SignUp = () => {
         name: "",
         email: "",
         password: "",
-        role: []
+        isSeller:false
     });
     const [emailError, setEmailError] = useState<string>("");
     const [passwordError, setPasswordError] = useState<string>("");
@@ -42,7 +42,7 @@ const SignUp = () => {
         setFormData(values => ({
             ...values,
             [name]: value,
-            role: ["buyer"]
+            // role: ["buyer"]
         }));
     }
 
@@ -81,16 +81,21 @@ const SignUp = () => {
             }
             else{
             console.log(formData);
+            const response = await axios.post(`${url}/auth/signup`, formData);
+            console.log(response);
+            if(response.status==201){
+                 toastwork("success", "SignUp Successfull");
+            setTimeout(()=>navigate("/login"), 2000);
+            }
             setFormData({
                 name: "",
                 email: "",
                 password: "",
-                role: ["buyer"]
+                isSeller:false
             });
         // const response = await axios.post(`${url}/signup`, formData);
           
-         toastwork("success", "SignUp Successfull");
-            setTimeout(()=>navigate("/login"), 2000);
+        
         }
         
         }

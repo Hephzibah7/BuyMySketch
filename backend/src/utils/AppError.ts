@@ -30,6 +30,8 @@ export class AppError extends Error {
 
     Error.captureStackTrace(this);
   }
+
+  
 }
 
 // 500 — API / unexpected errors

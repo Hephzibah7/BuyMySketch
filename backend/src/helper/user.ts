@@ -7,7 +7,7 @@ import { ValidationError, BadRequestError, APIError } from "../utils/AppError.js
 async function addUser(user:userDataType, next:NextFunction){
     try{
         
-        const {name, password, email, role}=user;
+        const {name, password, email}=user;
 
         //check whether the fields are not empty
         if(!name) throw new ValidationError("Name is required");

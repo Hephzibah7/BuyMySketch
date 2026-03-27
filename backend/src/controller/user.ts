@@ -2,7 +2,7 @@ import {Request, Response, NextFunction} from "express";
 import userDataType from "../type/userDataType.js";
 import userHelper from "../helper/user.js";
 import userRepo from "../repositary/user.js";
-import { AppError } from "../utils/AppError.js";
+import { AppError, ValidationError } from "../utils/AppError.js";
 import loginType from "../type/loginType.js";
 
 const SECRET_KEY="secret_key";
@@ -10,7 +10,8 @@ const SECRET_KEY="secret_key";
 async function addUser(req:Request, res:Response, next:NextFunction):Promise<void>{
     try{
         const data=req.body as userDataType;
-        if(!data) throw next(new AppError("Data Missing",400));
+        console.log(data);
+        if(!data) throw new ValidationError("Data is Missing");
         const user= await userHelper.addUser(data, next);
         
         if(!user) return;
